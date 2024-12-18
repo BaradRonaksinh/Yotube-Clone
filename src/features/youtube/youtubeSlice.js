@@ -10,7 +10,7 @@ const initialState = {
     currentPlaying:null,
     searchTerm:"",
     searchResult:[],
-    nextPageToker:null,
+    nextPageToken:null,
     recommendedVideo:[]
 };
 
@@ -36,21 +36,23 @@ const youtubeSlice = createSlice({
                 state.nextPageToken = action.payload.nextPageToken;
             }
         })
-        builder.addCase(getSearchPageVideos.fulfilled,(state,action)=> {
-            if(action.payload && action.payload.parsedData){
-                state.videos = action.payload.parsedData;
-                state.nextPageToken = action.payload.nextPageToken;
-            }
-        })
-        builder.addCase(getRecommendedVideos.fulfilled,(state,action)=> {
-            if(action.payload && action.payload.parsedData){
-                state.recommendedVideo = action.payload.parsedData;
-            }
-        })
-        builder.addCase(getVideoDetails.fulfilled,(state,action)=> {
-                state.currentPlaying = action.payload;
-        })
+        // builder.addCase(getSearchPageVideos.fulfilled,(state,action)=> {
+        //     if(action.payload && action.payload.parsedData){
+        //         state.videos = action.payload.parsedData;
+        //         state.nextPageToken = action.payload.nextPageToken;
+        //     }
+        // })
+        // builder.addCase(getRecommendedVideos.fulfilled,(state,action)=> {
+        //     if(action.payload && action.payload.parsedData){
+        //         state.recommendedVideo = action.payload.parsedData;
+        //     }
+        // })
+        // builder.addCase(getVideoDetails.fulfilled,(state,action)=> {
+        //         state.currentPlaying = action.payload;
+        // })
     }
 })
 
+
+export const {clearVideos,changeSearchTerm,clearSearchTerm} = youtubeSlice.actions;
 export default youtubeSlice.reducer;
