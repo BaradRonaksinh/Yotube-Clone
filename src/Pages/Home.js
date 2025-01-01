@@ -25,7 +25,7 @@ const Home = () => {
         <div className='flex' style={{ height: "92.5vh" }}>
           <Sidebar />
           {
-            videos.length ? (
+            videos.length  ? (
               <InfiniteScroll
                 dataLength={videos.length}
                 next={() => dispatch(getHomePageVideos(true))}
